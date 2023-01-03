@@ -93,7 +93,7 @@ RSpec.describe Museum do
     end
 
     it 'returns an array of customers with interest but not enough money' do
-      expect(dmns.ticket_lottery_contestants(dead_sea_scrolls)).to eq[patron_1, patron_3]
+      expect(dmns.ticket_lottery_contestants(dead_sea_scrolls)).to eq([patron_1, patron_3])
     end
   end
 end
