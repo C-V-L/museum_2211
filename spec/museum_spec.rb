@@ -28,15 +28,28 @@ RSpec.describe Museum do
   end
 
   describe '#add_exhibit' do
-
-  before do
-    dmns.add_exhibit(gems_and_minerals)
-    dmns.add_exhibit(dead_sea_scrolls)
-    dmns.add_exhibit(imax)
-  end
+    before do
+      dmns.add_exhibit(gems_and_minerals)
+      dmns.add_exhibit(dead_sea_scrolls)
+      dmns.add_exhibit(imax)
+    end
   
     it 'can add an exhibit' do
       expect(dmns.exhibits).to eq([gems_and_minerals, dead_sea_scrolls, imax])
     end
   end
+
+  describe '#recommended_exhibits' do
+    before do
+      dmns.add_exhibit(gems_and_minerals)
+      dmns.add_exhibit(dead_sea_scrolls)
+      dmns.add_exhibit(imax)
+    end
+
+    it 'can recommend exhibits to patrons with matching interests' do
+      expect(dmns.recommended_exhibits(patron_1)).to eq([gems_and_minerals, dead_sea_scrolls])
+      expect(dmns.recommended_exhibits(patron_2)).to eq([imax])
+    end
+  end
+
 end
