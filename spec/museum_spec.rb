@@ -59,7 +59,7 @@ RSpec.describe Museum do
       expect(dmns.patrons).to eq([])
     end
 
-    it 'can #add_patrons' do
+    it 'can #admin patrons' do
     dmns.admit(patron_1)
     dmns.admit(patron_2)
     dmns.admit(patron_3)
