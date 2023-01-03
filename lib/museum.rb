@@ -27,7 +27,7 @@ class Museum
 
   def patrons_by_exhibit_interest
     hash = @exhibits.to_h { |exhibit| [exhibit, []] }
-
+    # binding.pry
     @exhibits.each do |exhibit|
       @patrons.each do |patron|
         if patron.recommended_exhibits.include?(exhibit)
