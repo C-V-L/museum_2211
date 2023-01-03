@@ -1,6 +1,7 @@
 require './lib/patron'
 require './lib/exhibit'
 require './lib/museum'
+require 'pry'
 
 RSpec.describe Museum do
   let(:dmns) { Museum.new('Denver Museum of Nature and Science') }
@@ -48,6 +49,7 @@ RSpec.describe Museum do
 
     it 'can recommend exhibits to patrons with matching interests' do
       expect(dmns.recommended_exhibits(patron_1)).to eq([gems_and_minerals, dead_sea_scrolls])
+      binding.pry
       expect(dmns.recommended_exhibits(patron_2)).to eq([imax])
     end
   end
