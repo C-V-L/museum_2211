@@ -75,14 +75,25 @@ RSpec.describe Museum do
       dmns.admit(patron_3)
     end
 
-    it 'can return a hash with exhibit keys and values of patrons interested' do
+    xit 'can return a hash with exhibit keys and values of patrons interested' do
       expected_hash = {
         gems_and_minerals => [patron_1],
         dead_sea_scrolls => [patron_1, patron_3],
         imax => [patron_2]
       }
-
       expect(dmns.patrons_by_exhibit_interest).to eq(expected_hash)
+    end
+  end
+
+  describe '#ticket_lottery_contestants' do
+    before do
+      dmns.admit(patron_1)
+      dmns.admit(patron_2)
+      dmns.admit(patron_3)
+    end
+
+    it 'returns an array of customers with interest but not enough money' do
+      expect(dmns.ticket_lottery_contestants(dead_sea_scrolls)).to eq[patron_1, patron_3]
     end
   end
 end

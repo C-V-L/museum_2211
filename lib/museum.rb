@@ -19,4 +19,22 @@ class Museum
   def admit(patron)
     @patrons << patron
   end
+
+  #need to create a hash with all exhibits as keys
+  # need to interate through each exhibit and find all patrons interested in it
+  # Add all patrons interested into the value of that hash key
+  #return whole hash
+
+  def patrons_by_exhibit_interest
+    hash = @exhibits.to_h { |exhibit| [exhibit, []] }
+
+    @exhibits.each do |exhibit|
+      @patrons.each do |patron|
+        if patron.recommended_exhibits.include?(exhibit)
+          hash[exhibit] << patron
+        end
+      end
+    end
+    hash
+  end
 end
